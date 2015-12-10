@@ -215,7 +215,7 @@ flows["${sha1}"] = {
         node {
             echo "Building ${buildId}"
             sh "docker build --tag=${images.jamesCompile} dockerfiles/compilation/java-8"
-            sh "cd dockerfiles/; docker run ${verbose} --name=${containers.jamesCompile} ${useMavenCache} --volumes-from=${containers.gitPublish} --volume=/destination ${images.jamesCompile} ${mergeBranch}"
+            sh "cd dockerfiles/; docker run ${verbose} --name=${containers.jamesCompile} ${useMavenCache} --volumes-from=${containers.gitPublish} --volume=/destination ${images.jamesCompile} -s ${mergeBranch}"
             building.success();
         }
         node {
